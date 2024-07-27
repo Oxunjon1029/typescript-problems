@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import { Equal, Expect } from '../helpers/type-utils';
 
-export const curryFunction = (t: any) => (u: any) => (v: any) => {
+export const curryFunction = <T>(t: T) => <U>(u: U) => <V>(v: V) => {
 	return { t, u, v };
 };
 

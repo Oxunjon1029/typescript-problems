@@ -1,12 +1,14 @@
 import { Equal, Expect } from '../helpers/type-utils';
-
-type Generic<T> = unknown;
-
 interface User {
 	id: number;
 	name: string;
 	email: string;
 }
+
+type Generic<T extends object> = {
+	[k in keyof T]?: T[k] | null | undefined;
+};
+
 
 const user1: Generic<User> = {
 	id: null,

@@ -1,6 +1,10 @@
 import { Equal, Expect } from '../helpers/type-utils';
 
-type Generic<T> = unknown;
+type DeepPartial<T> = {
+    [P in keyof T]?: T[P] extends object? DeepPartial<T[P]> : T[P];
+};
+
+type Generic<T> = DeepPartial<T>;
 
 interface User {
 	id: number;
